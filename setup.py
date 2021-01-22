@@ -11,14 +11,14 @@ plugin_package = "octoprint_LEDController"
 
 # The plugin's human readable name. Can be overwritten within OctoPrint's internal data via __plugin_name__ in the
 # plugin module
-plugin_name = "OctoPrint-Ledcontroller"
+plugin_name = "OctoPrint-LEDController"
 
 # The plugin's version. Can be overwritten within OctoPrint's internal data via __plugin_version__ in the plugin module
 plugin_version = "1.0.0"
 
 # The plugin's description. Can be overwritten within OctoPrint's internal data via __plugin_description__ in the plugin
 # module
-plugin_description = """Initial work on LED Strip controller through rPI and GPIO"""
+plugin_description = "Initial work on LED Strip controller through rPI and GPIO"
 
 # The plugin's author. Can be overwritten within OctoPrint's internal data via __plugin_author__ in the plugin module
 plugin_author = "Marcus Toftås"
