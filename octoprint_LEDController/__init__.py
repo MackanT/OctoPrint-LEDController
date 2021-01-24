@@ -13,19 +13,7 @@ class LEDControllerPlugin(octoprint.plugin.StartupPlugin,
                           octoprint.plugin.AssetPlugin,
                           octoprint.plugin.SimpleApiPlugin):
 
-    def on_after_startup(self):
-
-        self._logger.info('--------------------------------------------------')
-        self._logger.info('LEDController Initiated, Awaiting User Inputs')
-        self._logger.info('Red Pin: {}, Green Pin: {}, Blue Pin: {}'.format(
-                                            self._settings.get(['red_pin']), 
-                                            self._settings.get(['green_pin']), 
-                                            self._settings.get(['blue_pin'])))
-        self._logger.info('--------------------------------------------------')
-
-        # Initializing Pin States to On
-        self.set_colors()
-
+    
     def get_settings_defaults(self):
         return dict(
             red_pin = 17,
@@ -42,6 +30,17 @@ class LEDControllerPlugin(octoprint.plugin.StartupPlugin,
             dict(type='settings', custom_bindings=False),
             dict(type='navbar', custom_bindings=False)
         ]
+
+    def on_after_startup(self):
+
+        self._logger.info('--------------------------------------------------')
+        self._logger.info('LEDController Initiated, Awaiting User Inputs')
+        self._logger.info('Red Pin: {}, Green Pin: {}, Blue Pin: {}'.format(
+                                            self._settings.get(['red_pin']), 
+                                            self._settings.get(['green_pin']), 
+                                            self._settings.get(['blue_pin'])))
+        self._logger.info('--------------------------------------------------')
+        self.set_colors()
 
     def set_colors(self):
         if self._settings.get(['light_on']):
@@ -65,11 +64,11 @@ class LEDControllerPlugin(octoprint.plugin.StartupPlugin,
     def on_api_get(self, request):
             self.set_colors()
 
-    def get_assets(self):
-        return dict(
-            js=['js/LEDController.js'],
-            css=['css/LEDController.css']
-        )
+    # def get_assets(self):
+    #     return dict(
+    #         js=['js/LEDController.js'],
+    #         css=['css/LEDController.css']
+    #     )
 
 __plugin_name__ = 'LED Controller'
 __plugin_pythoncompat__ = '>=2.7,<4'
