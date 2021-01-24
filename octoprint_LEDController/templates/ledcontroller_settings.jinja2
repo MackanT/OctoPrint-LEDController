@@ -1,0 +1,74 @@
+<form class="form-horizontal">
+
+	<h3>Color Selection</h3>
+	
+	<div class='color_inputs'>
+
+		<div class="control-group">
+			<label class="control-label">{{ _('Red Value:') }}</label>
+			<div class="controls" data-toggle="tooltip" title="{{ _('Strength of Red color (0, 255)') }}">
+				<input type="number" id="red_str" min="0" max="255" class="input-small" data-bind="value: settings.plugins.LEDController.red_strength">
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label">{{ _('Green Value:') }}</label>
+			<div class="controls" data-toggle="tooltip" title="{{ _('Strength of Green color (0, 255)') }}">
+				<input type="number" id="green_str" min="0" max="255" class="input-small" data-bind="value: settings.plugins.LEDController.green_strength">
+			</div>
+		</div> 
+
+		<div class="control-group">
+			<label class="control-label">{{ _('Blue Value:') }}</label>
+			<div class="controls" data-toggle="tooltip" title="{{ _('Strength of Blue color (0, 255)') }}">
+				<input type="number" id="blue_str" min="0" max="255" class="input-small" data-bind="value: settings.plugins.LEDController.blue_strength">
+			</div>
+		</div>
+	
+	</div>
+
+	<div class='colored_box'>
+		<input name="clr" id="clrPicker" size=120 type="color" class='clrBox'>
+	</div>
+	
+	<div class='clearfix'></div>
+
+	<h3>PI Pin Layout</h3>
+
+	<div class="control-group">
+		<label class="control-label">{{ _('Red Pin:') }}</label>
+		<div class="controls" data-toggle="tooltip" title="{{ _('The GPIO number of the pin the Red line is connected to') }}">
+			<input type="number" min="1" max="40" class="input-small" data-bind="value: settings.plugins.LEDController.red_pin">
+		    <div class="help-block">{{ _('The GPIO number of the pin the Red line is connected to') }}</div>
+        </div>
+    </div>
+
+    <div class="control-group">      
+        <label class="control-label">{{ _('Green Pin:') }}</label>
+		<div class="controls" data-toggle="tooltip" title="{{ _('The GPIO number of the pin the Green line is connected to') }}">
+			<input type="number" min="1" max="40" class="input-small" data-bind="value: settings.plugins.LEDController.green_pin">
+            <div class="help-block">{{ _('The GPIO number of the pin the Green line is connected to') }}</div>
+		</div>
+    </div>
+
+    <div class="control-group">   
+        <label class="control-label">{{ _('Blue PIN') }}</label>
+		<div class="controls" data-toggle="tooltip" title="{{ _('The GPIO number of the pin the Blue line is connected to') }}">
+			<input type="number" min="1" max="40" class="input-small" data-bind="value: settings.plugins.LEDController.blue_pin">
+            <div class="help-block">{{ _('The GPIO number of the pin the Blue line is connected to') }}</div>
+		</div>
+    </div>
+
+    <div class="control-group">
+		<div class="controls">
+			<label class="checkbox">
+				<input type="checkbox" data-bind="checked: settings.plugins.LEDController.light_on">
+				{{ _('Lights Enabled') }}
+                <div class="help-block">{{ _('Enable/Disable the LED lighting') }}</div>
+			</label>
+		</div>
+	</div>
+
+</form>
+
+

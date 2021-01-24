@@ -1,0 +1,21 @@
+#tab_plugin_LEDController iframe {
+    width: 100%;
+    height: 600px;
+    border: 15px solid #808080;
+  }
+
+  .color_inputs{
+    width: 50%;
+    margin-right: 2%;
+    float: left;
+  }
+  .colored_box{
+    width: 40%;
+    float: left;
+  }
+  .clrBox{
+    width: 100%;
+  }
+  .clearfix{
+    clear: both;
+  }
