@@ -83,9 +83,9 @@ $(function() {
         }
     }
 
-    OCTOPRINT_VIEWMODELS.push([
-        LEDControllerViewModel,
-        ['settingsViewModel'],
-        [document.getElementById("settings_plugin_LEDController")]
-    ]);
+    OCTOPRINT_VIEWMODELS.push({
+        construct: LEDControllerViewModel,
+        dependencies: ['settingsViewModel'],
+        elements: ["#settings_plugin_LEDController"],
+    });
 });
