@@ -10,7 +10,7 @@ pi = pigpio.pi()
 class LEDControllerPlugin(octoprint.plugin.StartupPlugin, 
                           octoprint.plugin.TemplatePlugin,
                           octoprint.plugin.SettingsPlugin,
-#                          octoprint.plugin.AssetPlugin,
+                          octoprint.plugin.AssetPlugin,
                           octoprint.plugin.SimpleApiPlugin):
 
     
@@ -44,6 +44,8 @@ class LEDControllerPlugin(octoprint.plugin.StartupPlugin,
 
     def set_colors(self):
         if self._settings.get(['light_on']):
+            self._logger.info(type(self._settings.get(['red_pin'])))
+            self._logger.info(type(self._settings.get(['red_strength'])))
             pi.set_PWM_dutycycle(self._settings.get(['red_pin']), 
                                  self._settings.get(['red_strength']))
             pi.set_PWM_dutycycle(self._settings.get(['green_pin']), 
@@ -65,11 +67,11 @@ class LEDControllerPlugin(octoprint.plugin.StartupPlugin,
             self.set_colors()
             return flask.jsonify(status="ok")
 
-    # def get_assets(self):
-    #     return dict(
-    #         js=['js/LEDController.js'],
-    #         css=['css/LEDController.css']
-    #     )
+    def get_assets(self):
+        return dict(
+            js=['js/LEDController.js'],
+            css=['css/LEDController.css']
+        )
 
 __plugin_name__ = 'LED Controller'
 __plugin_pythoncompat__ = '>=2.7,<4'
