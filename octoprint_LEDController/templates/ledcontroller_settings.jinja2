@@ -2,7 +2,7 @@
 
 	<h3>Color Selection</h3>
 	
-	<div class='color_inputs'>
+	{# <div class='color_inputs'> #}
 
 		<div class="control-group">
 			<label class="control-label">{{ _('Red Value:') }}</label>
@@ -25,13 +25,13 @@
 			</div>
 		</div>
 	
-	</div>
+	{# </div> #}
 
-	<div class='colored_box'>
+	{# <div class='colored_box'> #}
 		<input class='clrBox' name="clr" id="hex_str" size=120 type="color">
-	</div>
+	{# </div> #}
 	
-	<div class='clearfix'></div>
+	{# <div class='clearfix'></div> #}
 
 	<h3>PI Pin Layout</h3>
 
@@ -52,7 +52,7 @@
     </div>
 
     <div class="control-group">   
-        <label class="control-label">{{ _('Blue PIN') }}</label>
+        <label class="control-label">{{ _('Blue Pin') }}</label>
 		<div class="controls" data-toggle="tooltip" title="{{ _('The GPIO number of the pin the Blue line is connected to') }}">
 			<input type="number" min="1" max="40" class="input-small" data-bind="value: settings.plugins.LEDController.blue_pin">
             <div class="help-block">{{ _('The GPIO number of the pin the Blue line is connected to') }}</div>
