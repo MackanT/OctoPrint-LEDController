@@ -64,11 +64,11 @@ class LEDControllerPlugin(octoprint.plugin.StartupPlugin,
     def on_api_get(self, request):
             self.set_colors()
 
-    def get_assets(self):
-        return dict(
-            js=['js/LEDController.js'],
-            css=['css/LEDController.css']
-        )
+    # def get_assets(self):
+    #     return dict(
+    #         js=['js/LEDController.js'],
+    #         css=['css/LEDController.css']
+    #     )
 
 __plugin_name__ = 'LED Controller'
 __plugin_pythoncompat__ = '>=2.7,<4'
