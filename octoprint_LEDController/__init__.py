@@ -10,7 +10,7 @@ pi = pigpio.pi()
 class LEDControllerPlugin(octoprint.plugin.StartupPlugin, 
                           octoprint.plugin.TemplatePlugin,
                           octoprint.plugin.SettingsPlugin,
-                          octoprint.plugin.AssetPlugin,
+#                          octoprint.plugin.AssetPlugin,
                           octoprint.plugin.SimpleApiPlugin):
 
     
@@ -63,6 +63,7 @@ class LEDControllerPlugin(octoprint.plugin.StartupPlugin,
 
     def on_api_get(self, request):
             self.set_colors()
+            return flask.jsonify(status="ok")
 
     # def get_assets(self):
     #     return dict(
