@@ -16,8 +16,8 @@ class LEDControllerPlugin(octoprint.plugin.StartupPlugin,
     
     def get_settings_defaults(self):
         return dict(
-            red_pin = 17,
-            green_pin = 27,
+            red_pin = 27,
+            green_pin = 17,
             blue_pin = 22,
             red_strength = 255,
             green_strength = 255,
@@ -44,23 +44,21 @@ class LEDControllerPlugin(octoprint.plugin.StartupPlugin,
 
     def set_colors(self):
         if self._settings.get(['light_on']):
-            self._logger.info(type(self._settings.get(['red_pin'])))
-            self._logger.info(type(self._settings.get(['red_strength'])))
-            pi.set_PWM_dutycycle(self._settings.get(['red_pin']), 
-                                 self._settings.get(['red_strength']))
-            pi.set_PWM_dutycycle(self._settings.get(['green_pin']), 
-                                 self._settings.get(['green_strength']))
-            pi.set_PWM_dutycycle(self._settings.get(['blue_pin']), 
-                                 self._settings.get(['blue_strength']))
+            pi.set_PWM_dutycycle(int(self._settings.get(['red_pin'])), 
+                                 int(self._settings.get(['red_strength'])))
+            pi.set_PWM_dutycycle(int(self._settings.get(['green_pin'])), 
+                                 int(self._settings.get(['green_strength'])))
+            pi.set_PWM_dutycycle(int(self._settings.get(['blue_pin'])), 
+                                 int(self._settings.get(['blue_strength'])))
             self._logger.info('Colors Set To: {} {} {}'.format(
                                     self._settings.get(['red_strength']), 
                                     self._settings.get(['green_strength']), 
                                     self._settings.get(['blue_strength'])
         ))
         else:
-            pi.set_PWM_dutycycle(self._settings.get(['red_pin']), 0)
-            pi.set_PWM_dutycycle(self._settings.get(['green_pin']), 0)
-            pi.set_PWM_dutycycle(self._settings.get(['blue_pin']), 0)
+            pi.set_PWM_dutycycle(int(self._settings.get(['red_pin'])), 0)
+            pi.set_PWM_dutycycle(int(self._settings.get(['green_pin'])), 0)
+            pi.set_PWM_dutycycle(int(self._settings.get(['blue_pin'])), 0)
             self._logger.info('Lights Disabled')
 
     def on_api_get(self, request):
