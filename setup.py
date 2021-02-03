@@ -33,7 +33,7 @@ plugin_url = "https://github.com/MackanT/OctoPrint-Ledcontroller"
 plugin_license = "AGPLv3"
 
 # Any additional requirements besides OctoPrint should be listed here
-plugin_requires = []
+plugin_requires = ['pigpiod']
 
 ### --------------------------------------------------------------------------------------------------------------------
 ### More advanced options that you usually shouldn't have to touch follow after this point
