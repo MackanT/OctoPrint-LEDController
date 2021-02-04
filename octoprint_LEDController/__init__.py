@@ -28,7 +28,8 @@ class LEDControllerPlugin(octoprint.plugin.StartupPlugin,
     def get_template_configs(self):
         return [
             dict(type='settings', custom_bindings=False),
-            dict(type='navbar', custom_bindings=False)
+            dict(type='navbar', custom_bindings=False),
+            dict(type='tab', custom_bindings=False)
         ]
 
     def on_after_startup(self):
@@ -44,26 +45,43 @@ class LEDControllerPlugin(octoprint.plugin.StartupPlugin,
 
     def set_colors(self):
         if self._settings.get(['light_on']):
-            pi.set_PWM_dutycycle(int(self._settings.get(['red_pin'])), 
-                                 int(self._settings.get(['red_strength'])))
-            pi.set_PWM_dutycycle(int(self._settings.get(['green_pin'])), 
-                                 int(self._settings.get(['green_strength'])))
-            pi.set_PWM_dutycycle(int(self._settings.get(['blue_pin'])), 
-                                 int(self._settings.get(['blue_strength'])))
+            # pi.set_PWM_dutycycle(int(self._settings.get(['red_pin'])), 
+            #                      int(self._settings.get(['red_strength'])))
+            # pi.set_PWM_dutycycle(int(self._settings.get(['green_pin'])), 
+            #                      int(self._settings.get(['green_strength'])))
+            # pi.set_PWM_dutycycle(int(self._settings.get(['blue_pin'])), 
+            #                      int(self._settings.get(['blue_strength'])))
             self._logger.info('Colors Set To: {} {} {}'.format(
                                     self._settings.get(['red_strength']), 
                                     self._settings.get(['green_strength']), 
                                     self._settings.get(['blue_strength'])
         ))
         else:
-            pi.set_PWM_dutycycle(int(self._settings.get(['red_pin'])), 0)
-            pi.set_PWM_dutycycle(int(self._settings.get(['green_pin'])), 0)
-            pi.set_PWM_dutycycle(int(self._settings.get(['blue_pin'])), 0)
+            # pi.set_PWM_dutycycle(int(self._settings.get(['red_pin'])), 0)
+            # pi.set_PWM_dutycycle(int(self._settings.get(['green_pin'])), 0)
+            # pi.set_PWM_dutycycle(int(self._settings.get(['blue_pin'])), 0)
             self._logger.info('Lights Disabled')
 
+    def get_api_commands(self):
+        return dict(
+            color_set=[]
+        )
+
+    # Toggle Button, On/Off
     def on_api_get(self, request):
+        new_state = not(self._settings.get(['light_on']))
+        self._settings.set(['light_on'], new_state)
+        self.set_colors()
+
+    def on_api_command(self, command, data):
+        
+        if command == "color_set":
+            self._settings.set(['red_strength'], data.get('red'))
+            self._settings.set(['green_strength'], data.get('green'))
+            self._settings.set(['blue_strength'], data.get('blue'))
+            self._settings.set(['light_on'], data.get('state'))
             self.set_colors()
-            return flask.jsonify(status="ok")
+
 
     def get_assets(self):
         return dict(
