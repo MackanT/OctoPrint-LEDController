@@ -14,11 +14,11 @@ plugin_package = "octoprint_LEDController"
 plugin_name = "OctoPrint-LEDController"
 
 # The plugin's version. Can be overwritten within OctoPrint's internal data via __plugin_version__ in the plugin module
-plugin_version = "1.0.0"
+plugin_version = "1.0.1"
 
 # The plugin's description. Can be overwritten within OctoPrint's internal data via __plugin_description__ in the plugin
 # module
-plugin_description = "Initial work on LED Strip controller through rPI and GPIO"
+plugin_description = "12V LED Strip Controller through rPI and GPIO"
 
 # The plugin's author. Can be overwritten within OctoPrint's internal data via __plugin_author__ in the plugin module
 plugin_author = "Marcus Toftås"
@@ -33,7 +33,7 @@ plugin_url = "https://github.com/MackanT/OctoPrint-Ledcontroller"
 plugin_license = "AGPLv3"
 
 # Any additional requirements besides OctoPrint should be listed here
-plugin_requires = ['pigpiod']
+plugin_requires = ['pigpio']
 
 ### --------------------------------------------------------------------------------------------------------------------
 ### More advanced options that you usually shouldn't have to touch follow after this point
