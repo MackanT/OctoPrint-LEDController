@@ -43,7 +43,7 @@ $(function() {
 
         // called when the user clicks the "Set Color" button
         self.set_color = function() {
-            // r_slider.value = self.r;
+            r_slider.value = self.r;
             r_input.value = self.r;
             g_slider.value = self.g;
             g_input.value = self.g;
@@ -55,7 +55,6 @@ $(function() {
         // testfunction for getting button to work
         self.testFun = function() {
             OctoPrint.simpleApiCommand("LEDController", "color_set", {"red": self.r, "green": self.g, "blue": self.b, "state": 1})
-            // OctoPrint.simpleApiGet("LEDController", "1");
         };
 
         // converts r,g,b to hex value
