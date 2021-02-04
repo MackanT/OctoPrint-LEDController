@@ -4,6 +4,7 @@ from __future__ import absolute_import, unicode_literals
 import octoprint.plugin
 
 import pigpio
+
 import flask
 pi = pigpio.pi()
 
